@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧠 Jogo da Memória 💕</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="background">
+        <div class="floating-hearts"></div>
+        <div class="sparkles"></div>
+    </div>
+    
+    <div class="game-container">
+        <div class="game-header">
+            <h1 class="game-title">
+                <span class="brain-icon">🧠</span>
+                Jogo da Memória
+                <span class="heart-icon">💕</span>
+            </h1>
+            <div class="score-container">
+                <div class="score-item">
+                    <i class="fas fa-heart"></i>
+                    <span>Pares: <span id="pairs">0</span>/8</span>
+                </div>
+                <div class="score-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Tempo: <span id="timer">00:00</span></span>
+                </div>
+                <div class="score-item">
+                    <i class="fas fa-redo"></i>
+                    <span>Movimentos: <span id="moves">0</span></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="game-screen" id="gameScreen">
+            <div class="start-screen" id="startScreen">
+                <div class="welcome-animation">
+                    <div class="memory-icon">🧠</div>
+                    <h2>Bem-vinda ao Jogo da Memória!</h2>
+                    <p class="subtitle">Encontre todos os pares para descobrir uma surpresa especial! 🎁</p>
+                    <div class="instructions">
+                        <div class="instruction-item">
+                            <i class="fas fa-hand-pointer"></i>
+                            <span>Clique nas cartas para virá-las</span>
+                        </div>
+                        <div class="instruction-item">
+                            <i class="fas fa-heart"></i>
+                            <span>Encontre os pares iguais</span>
+                        </div>
+                        <div class="instruction-item">
+                            <i class="fas fa-brain"></i>
+                            <span>Use sua memória para lembrar as posições</span>
+                        </div>
+                        <div class="instruction-item">
+                            <i class="fas fa-trophy"></i>
+                            <span>Complete o jogo para ganhar!</span>
+                        </div>
+                    </div>
+                    <button id="startBtn" class="btn btn-primary">
+                        <i class="fas fa-play"></i>
+                        Começar Jogo
+                    </button>
+                </div>
+            </div>
+            
+            <div class="game-area" id="gameArea" style="display: none;">
+                <div class="memory-board" id="memoryBoard">
+                    <!-- Cartas serão geradas dinamicamente -->
+                </div>
+            </div>
+            
+            <div class="game-over-screen" id="gameOverScreen" style="display: none;">
+                <div class="game-over-animation">
+                    <div class="sad-face">😢</div>
+                    <h2>Tempo Esgotado!</h2>
+                    <p>Você não conseguiu completar o jogo!</p>
+                    <div class="final-score">
+                        <span>Pares encontrados: <span id="finalPairs">0</span>/8</span>
+                    </div>
+                    <button id="restartBtn" class="btn btn-secondary">
+                        <i class="fas fa-redo"></i>
+                        Tentar Novamente
+                    </button>
+                </div>
+            </div>
+            
+            <div class="victory-screen" id="victoryScreen" style="display: none;">
+                <div class="victory-animation">
+                    <div class="confetti"></div>
+                    <div class="fireworks"></div>
+                    <div class="celebration-lights"></div>
+                    
+                    <div class="victory-content">
+                        <h2 class="victory-title">🎉 PARABÉNS! 🎉</h2>
+                        <p class="victory-subtitle">Você completou o jogo da memória!</p>
+                        
+                        <div class="surprise-reveal">
+                            <div class="surprise-text-animation">
+                                <span class="letter">U</span>
+                                <span class="letter">M</span>
+                                <span class="letter">A</span>
+                                <span class="letter space"></span>
+                                <span class="letter">S</span>
+                                <span class="letter">U</span>
+                                <span class="letter">R</span>
+                                <span class="letter">P</span>
+                                <span class="letter">R</span>
+                                <span class="letter">E</span>
+                                <span class="letter">S</span>
+                                <span class="letter">A</span>
+                            </div>
+                        </div>
+                        
+                        <div class="ring-reveal">
+                            <div class="ring-container">
+                                <div class="ring-animation">💍</div>
+                                <div class="sparkle-effect"></div>
+                                <div class="ring-glow"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="proposal-container">
+                            <p class="surprise-text">Você ganhou esse anel de noivado!</p>
+                            <div class="proposal-question">
+                                <p class="proposal-name">Luana</p>
+                                <p class="proposal-text">você aceita</p>
+                                <p class="proposal-name">Vinicius Gabriel</p>
+                                <p class="proposal-text">como seu noivo?</p>
+                                <div class="proposal-hearts">💕💕💕</div>
+                            </div>
+                        </div>
+                        
+                        <div class="proposal-buttons">
+                            <button id="yesBtn" class="btn btn-success proposal-btn">
+                                <i class="fas fa-heart"></i>
+                                <span>Sim! 💕</span>
+                                <div class="btn-glow"></div>
+                            </button>
+                            <button id="noBtn" class="btn btn-danger proposal-btn">
+                                <i class="fas fa-heart-broken"></i>
+                                <span>Não 😢</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="final-screen" id="finalScreen" style="display: none;">
+                <div class="celebration-screen">
+                    <div class="celebration-animation">
+                        <div class="fireworks"></div>
+                        <h2>💕 Sim! 💕</h2>
+                        <p>Vocês estão noivos! 🎊</p>
+                        <div class="celebration-emojis">🎉💍💕🎊💒</div>
+                        <div class="love-message">
+                            <p>Que o amor de vocês seja eterno! 💕</p>
+                        </div>
+                        <button id="playAgainBtn" class="btn btn-primary">
+                            <i class="fas fa-redo"></i>
+                            Jogar Novamente
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="audio-controls">
+        <button id="muteBtn" class="audio-btn">
+            <i class="fas fa-volume-up"></i>
+        </button>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
