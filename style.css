@@ -5,6 +5,12 @@
     box-sizing: border-box;
 }
 
+html, body {
+    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 25%, #fecfef 50%, #fecfef 75%, #ff9a9e 100%);
@@ -126,6 +132,9 @@ body {
     box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
     text-align: center;
     max-width: 600px;
+    width: 100%;
+    max-height: 100vh;
+    overflow: hidden;
     width: 95%;
     position: relative;
     z-index: 10;
@@ -856,78 +865,201 @@ body {
 
 /* Responsividade */
 @media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+    
     .game-container {
-        width: 95%;
-        padding: 20px;
-        max-width: 450px;
+        width: 100vw;
+        height: 100vh;
+        padding: 5px;
+        max-width: none;
+        box-sizing: border-box;
+        overflow: hidden;
     }
     
     .game-title {
-        font-size: 1.6em;
+        font-size: 1.3em;
+        margin: 5px 0;
     }
     
     .memory-board {
         grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        padding: 15px;
+        gap: 6px;
+        padding: 10px;
+        max-height: 60vh;
+        overflow: hidden;
     }
     
     .memory-card {
-        font-size: 2em;
+        font-size: 1.5em;
+        height: 50px;
     }
     
     .score-container {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-around;
         align-items: center;
-        gap: 10px;
+        gap: 5px;
+        margin: 5px 0;
+        flex-wrap: wrap;
     }
     
     .score-item {
-        padding: 8px 15px;
-        font-size: 0.9em;
+        padding: 5px 10px;
+        font-size: 0.8em;
+        flex: 1;
+        min-width: 80px;
+        text-align: center;
     }
     
     .proposal-buttons {
         flex-direction: column;
         align-items: center;
-    }
-    
-    .btn {
-        padding: 12px 25px;
-        font-size: 1.1em;
-    }
-    
-    .instruction-item {
-        font-size: 0.9em;
-        padding: 12px;
-    }
-}
-
-@media (max-width: 480px) {
-    .game-title {
-        font-size: 1.4em;
-    }
-    
-    .memory-board {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-    }
-    
-    .memory-card {
-        font-size: 1.8em;
+        margin-top: 15px;
     }
     
     .btn {
         padding: 10px 20px;
         font-size: 1em;
-    }
-    
-    .instructions {
-        gap: 10px;
+        margin: 5px;
+        width: 90%;
+        max-width: 200px;
     }
     
     .instruction-item {
-        padding: 10px;
         font-size: 0.8em;
+        padding: 8px;
+    }
+    
+    .victory-screen {
+        height: 100vh;
+        overflow-y: auto;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+    
+    .victory-title {
+        font-size: 2em;
+        margin: 10px 0;
+    }
+    
+    .victory-subtitle {
+        font-size: 1em;
+        margin: 5px 0;
+    }
+    
+    .letter {
+        font-size: 1.8em;
+    }
+    
+    .ring-animation {
+        font-size: 3em;
+    }
+    
+    .proposal-question {
+        font-size: 1.1em;
+        margin: 10px 0;
+    }
+    
+    .proposal-name {
+        font-size: 1.2em;
+    }
+    
+    .proposal-text {
+        font-size: 0.9em;
+    }
+    
+    .proposal-hearts {
+        font-size: 1.5em;
+    }
+    
+    .proposal-btn {
+        font-size: 1em;
+        padding: 12px 25px;
+        margin: 8px;
+        width: 90%;
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-container {
+        padding: 3px;
+    }
+    
+    .game-title {
+        font-size: 1.1em;
+    }
+    
+    .memory-board {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4px;
+        max-height: 55vh;
+    }
+    
+    .memory-card {
+        font-size: 1.2em;
+        height: 45px;
+    }
+    
+    .score-container {
+        flex-direction: column;
+        gap: 3px;
+    }
+    
+    .score-item {
+        padding: 4px 8px;
+        font-size: 0.7em;
+    }
+    
+    .btn {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+    
+    .instruction-item {
+        font-size: 0.7em;
+        padding: 6px;
+    }
+    
+    .victory-title {
+        font-size: 1.6em;
+    }
+    
+    .victory-subtitle {
+        font-size: 0.9em;
+    }
+    
+    .letter {
+        font-size: 1.4em;
+    }
+    
+    .ring-animation {
+        font-size: 2.5em;
+    }
+    
+    .proposal-question {
+        font-size: 1em;
+    }
+    
+    .proposal-name {
+        font-size: 1.1em;
+    }
+    
+    .proposal-text {
+        font-size: 0.8em;
+    }
+    
+    .proposal-hearts {
+        font-size: 1.2em;
+    }
+    
+    .proposal-btn {
+        font-size: 0.9em;
+        padding: 10px 20px;
     }
 }
